@@ -1,5 +1,5 @@
 import csv
-
+#This code is just important if you dont use MinMax to filter the boards
 def filter_winner(file, output_file):
     filtered_data = []
 
@@ -10,17 +10,16 @@ def filter_winner(file, output_file):
     temp_game = []
     for row in data:
         if len(row) == 1:
-            # Gewinner überprüfen
+            # check winner
             result = int(row[0])
-            if result == -1:  # Nur Spiele speichern wo -1 gewinnt
-                #Extend benutzen und nicht append weil sonst eine Unterliste zur Liste hinzugefügt wird und nicht die einzelnen Elemente
+            if result == -1:  # just save games where player -1 wins
                 filtered_data.extend(temp_game)
-            #Wenn der Spieler nicht -1 ist, wird die Liste wieder geleert.
+            # empty list if the winner is not player -1
             temp_game = []
         else:
             temp_game.append(row)
 
-    # Gefilterten Daten in das neue CSV file schreiben
+    # save filtered data in a new csv file
     with open(output_file, "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(filtered_data)

@@ -1,5 +1,5 @@
 import csv
-
+# generate every possible board to be evaluated by the MinMax algorithm
 zahlen = [1,0,-1]
 
 def collect_data(file,data):
